@@ -18,7 +18,7 @@ class BlogPost(models.Model):
 class PrivatePost(models.Model):
     """Post seen only by registered users"""
     title = models.CharField(max_length=150)
-    text = models.TextField
+    text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         """String representation"""
@@ -27,4 +27,14 @@ class PrivatePost(models.Model):
             return f'{self.text[:]}'
         else:
             return f'{self.text[:200]}...'
-        
+
+
+class BlogComments(models.Model):
+    """A comment under the blog post"""
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    text = models.TextField(max_length=300)
+    date_added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        """String representation"""
+        return self.text
+
