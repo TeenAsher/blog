@@ -38,3 +38,12 @@ class BlogComments(models.Model):
         """String representation"""
         return self.text
 
+
+class PrivateComments(models.Model):
+    """A comment under the private post"""
+    post = models.ForeignKey(PrivatePost, on_delete=models.CASCADE)
+    text = models.TextField(max_length=500)
+    date_added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        """String representation"""
+        return self.text

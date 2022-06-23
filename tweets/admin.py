@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import BlogPost, PrivatePost, BlogComments
+from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
 # Register your models here.
 
 admin.site.register(BlogPost)
 admin.site.register(PrivatePost)
 admin.site.register(BlogComments)
+admin.site.register(PrivateComments)
