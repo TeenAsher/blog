@@ -7,16 +7,14 @@
 <body>
 {% block content %}
 
-  <p>Posts:</p>
-
-  <a href="{% url 'tweets:more' %}">See more</a>
+  <p>Enjoy the Kisik Blog!</p>
 
   <ul>
-      {% for post in posts %}
+      {% for pst in post %}
         <li>
-            <p>{{ post.title }}</p>
-            <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
-            <p>{{ post.text|linebreaks }}</p>
+            <p>{{ pst.title }}</p>
+            <p>{{ pst.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ pst.text|linebreaks }}</p>
         </li>
       {% empty %}
         <li>No posts added yet</li>

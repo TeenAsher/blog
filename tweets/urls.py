@@ -7,6 +7,8 @@ app_name = 'tweets'
 urlpatterns = [
     # Home page:
     path('', views.index, name='index'),
-    # Page that shows all the blog
+    # Page that shows average posts
     path('posts/', views.posts, name='posts'),
+    # Page that shows private posts
+    path('more/', views.more, name='more'),
 ]
