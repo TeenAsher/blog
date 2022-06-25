@@ -26,3 +26,12 @@ def blog_com(request, post_id):
     comments = post.blogcomments_set.order_by('-date_added')
     context = {'post': post, 'comments': comments}
     return render(request, 'tweets/blog_com.html', context)
+
+
+def priv_com(request, post_id):
+    """The page that shows comments under the private post"""
+    post = PrivatePost.objects.get(id=post_id)
+    comments = post.privatecomments_set.order_by('-date_added')
+    context = {'post': post, 'comments': comments}
+    return render(request, 'tweets/priv_com.html', context)
+

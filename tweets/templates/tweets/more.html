@@ -10,11 +10,12 @@
   <p>Enjoy the Kisik Blog!</p>
 
   <ul>
-      {% for pst in post %}
+      {% for post in post %}
         <li>
-            <p>{{ pst.title }}</p>
-            <p>{{ pst.date_added|date:'M d, Y H:i' }}</p>
-            <p>{{ pst.text|linebreaks }}</p>
+            <p>{{ post.title }}</p>
+            <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ post.text|linebreaks }}</p>
+            <a href="{% url 'tweets:priv_com' post.id %}">See comments</a>
         </li>
       {% empty %}
         <li>No posts added yet</li>
