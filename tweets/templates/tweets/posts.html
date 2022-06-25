@@ -17,6 +17,7 @@
             <p>{{ post.title }}</p>
             <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
             <p>{{ post.text|linebreaks }}</p>
+            <a href="{% url 'tweets:blog_com' post.id %}">See comments</a>
         </li>
       {% empty %}
         <li>No posts added yet</li>

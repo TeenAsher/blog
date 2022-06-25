@@ -11,4 +11,6 @@ urlpatterns = [
     path('posts/', views.posts, name='posts'),
     # Page that shows private posts
     path('more/', views.more, name='more'),
+    # Page for reading comments under the average posts
+    path('posts/<int:post_id>/', views.blog_com, name='blog_com'),
 ]
