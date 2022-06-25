@@ -9,7 +9,8 @@
 
   <p>Posts:</p>
 
-  <a href="{% url 'tweets:more' %}">See more</a>
+  <a href="{% url 'tweets:more' %}">see more</a> -
+  <a href="{% url 'tweets:new_post' %}">new post</a>
 
   <ul>
       {% for post in posts %}

@@ -15,4 +15,6 @@ urlpatterns = [
     path('posts/<int:post_id>/', views.blog_com, name='blog_com'),
     # Page for reading comments under the private posts
     path('more/<int:post_id>/', views.priv_com, name='priv_com'),
+    # Page for writing a new BlogPost
+    path('new_post/', views.new_post, name='new_post'),
 ]
