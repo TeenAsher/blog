@@ -8,6 +8,8 @@
 {% block content %}
 
   <p>Enjoy the Kisik Blog!</p>
+  <a href="{% url 'tweets:new_prpost' %}">new post</a> -
+  <a href="{% url 'tweets:new_prpost' %}">new big post</a>
 
   <ul>
       {% for post in post %}

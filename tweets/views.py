@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
-from .forms import BlPostForm
+from .forms import BlPostForm, PrPostForm
 # Create your views here.
 def index(request):
     """The home page of the Blog"""
@@ -51,3 +51,18 @@ def new_post(request):
 
     context = {'form': form}
     return render(request, 'tweets/new_post.html', context)
+
+
+def new_prpost(request):
+    """Write a new private post"""
+    if request.method != 'POST':
+        form = PrPostForm()
+    else:
+        form = PrPostForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tweets:more')
+
+    context = {'form': form}
+    return render(request, 'tweets/new_prpost.html', context)
+

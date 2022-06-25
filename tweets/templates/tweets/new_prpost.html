@@ -6,11 +6,11 @@
 </head>
 <body>
 {% block content %}
-
-  <p>Write the new post:</p>
   <input type="button" onclick="history.back();" value="Back"/>
 
-  <form action="{% url 'tweets:new_post' %}" method="post">
+  <p>Write the new post:</p>
+
+  <form action="{% url 'tweets:new_prpost' %}" method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <button name="submit">Public</button>

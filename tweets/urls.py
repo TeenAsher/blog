@@ -17,4 +17,6 @@ urlpatterns = [
     path('more/<int:post_id>/', views.priv_com, name='priv_com'),
     # Page for writing a new BlogPost
     path('new_post/', views.new_post, name='new_post'),
+    # Page for writing a new PrivatePost
+    path('new_prpost/', views.new_prpost, name='new_prpost'),
 ]
