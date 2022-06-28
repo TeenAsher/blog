@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
-from .forms import BlPostForm, PrPostForm, BlComForm
+from .forms import BlPostForm, PrPostForm, BlComForm, PrComForm
 # Create your views here.
 def index(request):
     """The home page of the Blog"""
@@ -83,3 +83,22 @@ def new_com(request, post_id):
 
     context = {'post': post, 'form': form}
     return render(request, 'tweets/new_com.html', context)
+
+
+def new_prcom(request, post_id):
+    """Write a new PrivateComment"""
+    post = PrivatePost.objects.get(id=post_id)
+
+    if request.method != 'POST':
+        form = PrComForm()
+    else:
+        form = PrComForm(data=request.POST)
+        if form.is_valid():
+            new_comm = form.save(commit=False)
+            new_comm.post = post
+            new_comm.save()
+            return redirect('tweets:priv_com', post_id=post_id)
+
+    context = {'post': post, 'form': form}
+    return render(request, 'tweets/new_prcom.html', context)
+

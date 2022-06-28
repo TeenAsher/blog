@@ -21,4 +21,6 @@ urlpatterns = [
     path('new_prpost/', views.new_prpost, name='new_prpost'),
     # Page for writing a new BL-comment
     path('new_com/<int:post_id>/', views.new_com, name='new_com'),
+    # Page for writing new PR-comments
+    path('new_prcom/<int:post_id>/', views.new_prcom, name='new_prcom'),
 ]

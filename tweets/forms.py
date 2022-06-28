@@ -24,3 +24,9 @@ class BlComForm(forms.ModelForm):
         fields = ['text']
         labels = {'text': ''}
 
+
+class PrComForm(forms.ModelForm):
+    class Meta:
+        model = PrivateComments
+        fields = ['text']
+        labels = {'text': ''}

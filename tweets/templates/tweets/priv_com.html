@@ -7,10 +7,14 @@
 <body>
 {% block content %}
 
-  <input type="button" onclick="history.back();" value="Back"/>
+  <input type="button" onclick="history.back()" value="Back"/>
 
   <p>{{ post.title }}</p>
   <p>Comments:</p>
+
+  <p>
+      <a href="{% url 'tweets:new_prcom' post.id %}">Add a comment</a>
+  </p>
 
   <ul>
       {% for comment in comments %}
