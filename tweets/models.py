@@ -50,3 +50,19 @@ class PrivateComments(models.Model):
     def __str__(self):
         """String representation"""
         return self.text
+
+class SuperPrivatePost(models.Model):
+    """A diary-type post for only one user"""
+    title = models.CharField(max_length=300)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        """String representation"""
+        text_len = len(self.text[:])
+        if text_len <= 200:
+            return f'{self.text[:]}'
+        else:
+            return f'{self.text[:200]}...'
+
+        
