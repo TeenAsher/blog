@@ -19,4 +19,6 @@ urlpatterns = [
     path('new_post/', views.new_post, name='new_post'),
     # Page for writing a new PrivatePost
     path('new_prpost/', views.new_prpost, name='new_prpost'),
+    # Page for writing a new BL-comment
+    path('new_com/<int:post_id>/', views.new_com, name='new_com'),
 ]

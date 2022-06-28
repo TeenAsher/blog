@@ -11,6 +11,9 @@
 
   <p>{{ post.title }}</p>
   <p>Comments:</p>
+  <p>
+      <a href="{% url 'tweets:new_com' post.id %}">Add a comment</a>
+  </p>
 
   <ul>
       {% for com in comments %}
