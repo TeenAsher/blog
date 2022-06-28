@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class BlogPost(models.Model):
@@ -6,6 +7,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=150)
     text = models.TextField(max_length=1000)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         """String representation"""
         text_len = len(self.text[:])
@@ -20,6 +22,7 @@ class PrivatePost(models.Model):
     title = models.CharField(max_length=150)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         """String representation"""
         text_len = len(self.text[:])
@@ -34,6 +37,7 @@ class BlogComments(models.Model):
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
     text = models.TextField(max_length=300)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         """String representation"""
         return self.text
@@ -44,6 +48,7 @@ class PrivateComments(models.Model):
     post = models.ForeignKey(PrivatePost, on_delete=models.CASCADE)
     text = models.TextField(max_length=500)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         """String representation"""
         return self.text
