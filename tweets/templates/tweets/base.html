@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <p>
       <a href="{% url 'tweets:index' %}">Kisik Blog</a> -
-      <a href="{% url 'tweets:posts' %}">Explore posts</a>
+      <a href="{% url 'tweets:posts' %}">Explore posts</a> -
+      {% if user.is_authenticated %}
+        Hello, {{ user.username }} -
+        <a href="{% url 'users:logout' %}">Log Out</a>
+      {% else %}
+        <a href="{% url 'users:login' %}">Log in</a>
+      {% endif %}
     </p>
 </head>
 <body>
