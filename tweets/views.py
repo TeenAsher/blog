@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
+from .models import BlogPost, PrivatePost
 from .forms import BlPostForm, PrPostForm, BlComForm, PrComForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     """The home page of the Blog"""
@@ -14,6 +15,7 @@ def posts(request):
     return render(request, 'tweets/posts.html', context)
 
 
+@login_required
 def more(request):
     """The page that shows private posts"""
     post = PrivatePost.objects.order_by('-date_added')
@@ -29,6 +31,7 @@ def blog_com(request, post_id):
     return render(request, 'tweets/blog_com.html', context)
 
 
+@login_required
 def priv_com(request, post_id):
     """The page that shows comments under the private post"""
     post = PrivatePost.objects.get(id=post_id)
@@ -37,6 +40,7 @@ def priv_com(request, post_id):
     return render(request, 'tweets/priv_com.html', context)
 
 
+@login_required
 def new_post(request):
     """Write a new post"""
     if request.method != 'POST':
@@ -53,6 +57,7 @@ def new_post(request):
     return render(request, 'tweets/new_post.html', context)
 
 
+@login_required
 def new_prpost(request):
     """Write a new private post"""
     if request.method != 'POST':
@@ -67,6 +72,7 @@ def new_prpost(request):
     return render(request, 'tweets/new_prpost.html', context)
 
 
+@login_required
 def new_com(request, post_id):
     """Write a new BlogComment"""
     post = BlogPost.objects.get(id=post_id)
@@ -85,6 +91,7 @@ def new_com(request, post_id):
     return render(request, 'tweets/new_com.html', context)
 
 
+@login_required()
 def new_prcom(request, post_id):
     """Write a new PrivateComment"""
     post = PrivatePost.objects.get(id=post_id)
