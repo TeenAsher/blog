@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
+from .models import BlogPost, PrivatePost, SuperPrivatePost
 from .forms import BlPostForm, PrPostForm, BlComForm, PrComForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -113,3 +113,9 @@ def new_prcom(request, post_id):
     context = {'post': post, 'form': form}
     return render(request, 'tweets/new_prcom.html', context)
 
+
+def my_diary(request):
+    """Private page for only one user"""
+    post = SuperPrivatePost.objects.order_by('-date_added')
+    context = {'post': post}
+    return render(request, 'tweets/my_diary.html', context)

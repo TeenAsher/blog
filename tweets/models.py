@@ -65,4 +65,3 @@ class SuperPrivatePost(models.Model):
         else:
             return f'{self.text[:200]}...'
 
-        

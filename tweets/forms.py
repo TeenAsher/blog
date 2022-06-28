@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
+from .models import BlogPost, PrivatePost, BlogComments, PrivateComments, SuperPrivatePost
 
 class BlPostForm(forms.ModelForm):
     class Meta:
@@ -31,3 +31,11 @@ class PrComForm(forms.ModelForm):
         model = PrivateComments
         fields = ['text']
         labels = {'text': ''}
+
+
+class SupPrPostForm(forms.ModelForm):
+    class Meta:
+        model = PrivatePost
+        fields = ['title', 'text']
+        labels = {'title': 'Title', 'text': ''}
+        widgets = {'text': forms.Textarea(attrs={'cols': 80})}

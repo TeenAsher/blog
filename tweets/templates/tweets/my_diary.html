@@ -7,20 +7,17 @@
 <body>
 {% block content %}
 
-  <p>Enjoy the Kisik Blog!</p>
-  <a href="{% url 'tweets:new_prpost' %}">New post</a> -
-  <a href="{% url 'tweets:new_prpost' %}">New big post</a>
+  <p>Welcome to My Diary. Here you can write your own thoughts and no one could get access to them.</p>
 
   <ul>
       {% for post in post %}
         <li>
             <p>{{ post.title }}</p>
-            <p>{{ post.date_added|date:'M d, Y H:i' }} - {{ post.owner }}</p>
+            <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
             <p>{{ post.text|linebreaks }}</p>
-            <a href="{% url 'tweets:priv_com' post.id %}">See comments</a>
         </li>
       {% empty %}
-        <li>No posts added yet</li>
+        <li>You haven't added any post yet!</li>
       {% endfor %}
   </ul>
 

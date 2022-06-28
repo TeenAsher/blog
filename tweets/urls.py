@@ -23,4 +23,6 @@ urlpatterns = [
     path('new_com/<int:post_id>/', views.new_com, name='new_com'),
     # Page for writing new PR-comments
     path('new_prcom/<int:post_id>/', views.new_prcom, name='new_prcom'),
+    # Page that shows only super private posts of one user
+    path('my_diary/', views.my_diary, name='my_diary'),
 ]
