@@ -15,7 +15,7 @@
       {% for post in post %}
         <li>
             <p>{{ post.title }}</p>
-            <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ post.date_added|date:'M d, Y H:i' }} - {{ post.owner }}</p>
             <p>{{ post.text|linebreaks }}</p>
             <a href="{% url 'tweets:priv_com' post.id %}">See comments</a>
         </li>

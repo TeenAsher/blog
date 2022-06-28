@@ -10,6 +10,7 @@ class BlPostForm(forms.ModelForm):
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}
 
 
+
 class PrPostForm(forms.ModelForm):
     class Meta:
         model = PrivatePost

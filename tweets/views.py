@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import BlogPost, PrivatePost
+from .models import BlogPost, PrivatePost, BlogComments, PrivateComments
 from .forms import BlPostForm, PrPostForm, BlComForm, PrComForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -50,7 +50,9 @@ def new_post(request):
         # POST data submitted; process data
         form = BlPostForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.owner = request.user
+            post.save()
             return redirect('tweets:posts')
 
     context = {'form': form}
@@ -65,7 +67,9 @@ def new_prpost(request):
     else:
         form = PrPostForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.owner = request.user
+            post.save()
             return redirect('tweets:more')
 
     context = {'form': form}
