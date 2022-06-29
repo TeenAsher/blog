@@ -5,10 +5,18 @@
     {% extends "tweets/base.html" %}}
 </head>
 <body>
-{% block content %}
-  <p>Welcome to the Kisik Blog. Here you can share all your thoughts about any topic.</p>
-  <p>Feel free to explore all the Blog but only registered users can make posts and leave comments.</p>
-  <p>Sign up to become the one kisik!</p>
-{% endblock content %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Welcome to the Kisik Blog!</h1>
+
+    <p class="lead">Here you can share all your thoughts about any topic.
+        Feel free to explore all the Blog.
+        Log in or register to become the one of us - the Kisik!</p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:login' %}" role="button">Log in &raquo;</a>
+  </div>
+{% endblock page_header %}
+
 </body>
 </html>
