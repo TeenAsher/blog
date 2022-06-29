@@ -24,6 +24,9 @@
               Explore posts</a></li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'tweets:my_diary' %}">My Diary</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'tweets:more' %}">See more</a>
+        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
