@@ -5,26 +5,28 @@
     {% extends "tweets/base.html" %}
 </head>
 <body>
+
+{% block page_header %}
+  <h3>{{ post.title }}</h3>
+  <h5>Comments:</h5>
+  <a class="btn btn-lg btn-primary" href="{% url 'tweets:new_com' post.id %}" role="button">Add a comment</a>
+{% endblock page_header %}
+
 {% block content %}
-
-  <input type="button" onclick="history.back();" value="Back"/>
-
-  <p>{{ post.title }}</p>
-  <p>Comments:</p>
   <p>
-      <a href="{% url 'tweets:new_com' post.id %}">Add a comment</a>
+      <a href="{% url 'tweets:posts' %}">Back to posts</a>
   </p>
-
-  <ul>
       {% for com in comments %}
-        <li>
-            <p>{{ com.date_added|date:'M d, Y H:i' }}</p>
-            <p>{{ com.text|linebreaks }}</p>
-        </li>
+        <div class="card mb-3">
+          <h4 class="card-header">
+              <small>{{ com.date_added|date:'M d, Y H:i' }}</small></h4>
+          <div class="card-body">
+            {{ com.text|linebreaks }}
+          </div>
+        </div>
       {% empty %}
-        <li>No comments yet</li>
+        <p>No comments yet</p>
       {% endfor %}
-  </ul>
 
 {% endblock content %}
 </body>
