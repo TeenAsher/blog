@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     {% extends "tweets/base.html" %}
+    {% load bootstrap4 %}
 </head>
 <body>
+
+{% block page_header %}
+  <h2>Log in to your account:</h2>
+{% endblock page_header %}
+
 {% block content %}
 
-  {% if form.errors %}
-    <p>Your username and your password didn't match. Please, try again!</p>
-  {% endif %}
-
-  <form method="post" action="{% url 'users:login' %}">
+  <form method="post" action="{% url 'users:login' %}" class="form">
       {% csrf_token %}
-      {{ form.as_p }}
-
-      <button name="submit">Log in</button>
+      {% bootstrap_form form %}
+      {% buttons %}
+        <button name="submit" class="btn btn-primary">Log in</button>
+      {% endbuttons %}
+      
       <input type="hidden" name="next"
       value="{% url 'tweets:index' %}" />
   </form>
