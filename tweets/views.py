@@ -1,6 +1,8 @@
+import http
+
 from django.shortcuts import render, redirect
 from .models import BlogPost, PrivatePost, SuperPrivatePost, User
-from .forms import BlPostForm, PrPostForm, BlComForm, PrComForm
+from .forms import BlPostForm, PrPostForm, BlComForm, PrComForm, SupPrPostForm
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 # Create your views here.
@@ -121,3 +123,20 @@ def my_diary(request):
     post = SuperPrivatePost.objects.filter(owner=request.user).order_by('-date_added')
     context = {'post': post}
     return render(request, 'tweets/my_diary.html', context)
+
+
+@login_required
+def new_thought(request):
+    """Page for writing super private posts"""
+    if request.method != 'POST':
+        form = SupPrPostForm()
+    else:
+        form = SupPrPostForm(data=request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.owner = request.user
+            post.save()
+            return redirect('tweets:my_diary')
+
+    context = {'form': form}
+    return render(request, 'tweets/new_thought.html', context)

@@ -25,4 +25,6 @@ urlpatterns = [
     path('new_prcom/<int:post_id>/', views.new_prcom, name='new_prcom'),
     # Page that shows my diary
     path('my_diary/', views.my_diary, name='my_diary'),
+    # Page for writing posts in my diary
+    path('new_thought/', views.new_thought, name='new_thought'),
 ]

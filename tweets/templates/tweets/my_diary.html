@@ -8,6 +8,7 @@
 {% block content %}
 
   <p>This is My Diary. Here you can write your private thoughts. Nobody would ever read it except you.</p>
+  <a href="{% url 'tweets:new_thought' %}">New diary post</a>
 
   <ul>
       {% for post in post %}

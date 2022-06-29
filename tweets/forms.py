@@ -35,7 +35,7 @@ class PrComForm(forms.ModelForm):
 
 class SupPrPostForm(forms.ModelForm):
     class Meta:
-        model = PrivatePost
+        model = SuperPrivatePost
         fields = ['title', 'text']
         labels = {'title': 'Title', 'text': ''}
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}

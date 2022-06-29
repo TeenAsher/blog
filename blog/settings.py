@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # My apps:
     'tweets',
     'users',
+    # Third party apps
+    'bootstrap4',
     # Default django apps:
     'django.contrib.admin',
     'django.contrib.auth',
