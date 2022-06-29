@@ -7,7 +7,7 @@
 <body>
 {% block content %}
 
-  <p>Welcome to My Diary. Here you can write your own thoughts and no one could get access to them.</p>
+  <p>This is My Diary. Here you can write your private thoughts. Nobody would ever read it except you.</p>
 
   <ul>
       {% for post in post %}
@@ -17,7 +17,7 @@
             <p>{{ post.text|linebreaks }}</p>
         </li>
       {% empty %}
-        <li>You haven't added any post yet!</li>
+        <li>No posts added yet</li>
       {% endfor %}
   </ul>
 
