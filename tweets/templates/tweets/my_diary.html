@@ -5,22 +5,27 @@
     {% extends "tweets/base.html" %}
 </head>
 <body>
+{% block page_header %}
+  <h1>Welcome to My Diary</h1>
+  <h4>Here you can write your private thoughts. Nobody would ever read it except you.</h4>
+  <a class="btn btn-lg btn-primary" href="{% url 'tweets:new_thought' %}" role="button">New diary post</a>
+{% endblock page_header %}
+
 {% block content %}
 
-  <p>This is My Diary. Here you can write your private thoughts. Nobody would ever read it except you.</p>
-  <a href="{% url 'tweets:new_thought' %}">New diary post</a>
-
-  <ul>
       {% for post in post %}
-        <li>
-            <p>{{ post.title }}</p>
-            <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
-            <p>{{ post.text|linebreaks }}</p>
-        </li>
+        <div class="card mb-3">
+          <h4 class="card-header">
+            {{ post.title }}
+            <small>{{ post.date_added|date:'M d, Y H:i' }}</small>
+          </h4>
+          <div class="card-body">
+            {{ post.text|linebreaks }}
+          </div>
+        </div>
       {% empty %}
-        <li>No posts added yet</li>
+        <p>No posts added yet</p>
       {% endfor %}
-  </ul>
 
 {% endblock content %}
 </body>
