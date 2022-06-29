@@ -5,24 +5,28 @@
     {% extends "tweets/base.html" %}
 </head>
 <body>
+{% block page_header %}
+  <h1>Enjoy the Kisik Blog!</h1>
+  <a class="btn btn-lg btn-primary" href="{% url 'tweets:new_prpost' %}" role="button">New big post</a>
+{% endblock page_header %}
+
 {% block content %}
 
-  <p>Enjoy the Kisik Blog!</p>
-  <a href="{% url 'tweets:new_prpost' %}">New post</a> -
-  <a href="{% url 'tweets:new_prpost' %}">New big post</a>
-
-  <ul>
       {% for post in post %}
-        <li>
-            <p>{{ post.title }}</p>
-            <p>{{ post.date_added|date:'M d, Y H:i' }} - {{ post.owner }}</p>
-            <p>{{ post.text|linebreaks }}</p>
-            <a href="{% url 'tweets:priv_com' post.id %}">See comments</a>
-        </li>
+        <div class="card mb-3">
+          <h4 class="card-header">
+            {{ post.title }}
+            <small>{{ post.date_added|date:'M d, Y H:i' }}</small> -
+            {{ post.owner }}
+          </h4>
+          <div class="card-body">
+            {{ post.text|linebreaks }}
+            <small><a href="{% url 'tweets:priv_com' post.id %}">See comments</a></small>
+          </div>
+        </div>
       {% empty %}
-        <li>No posts added yet</li>
+        <p>No posts added yet</p>
       {% endfor %}
-  </ul>
 
 {% endblock content %}
 </body>
